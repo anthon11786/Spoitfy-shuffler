@@ -3,7 +3,7 @@
   "expoServerPort": null,
   "packagerPort": null,
   "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerNgrokUrl": "https://em-zvk.anonymous.spoitfy-shuffler.exp.direct",
+  "packagerNgrokUrl": "https://packager.em-zvk.anonymous.spoitfy-shuffler.exp.direct",
+  "ngrokPid": 20634
 }
