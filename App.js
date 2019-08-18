@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, TextInput, View, Switch, Alert, Button } from 'react-native';
 import { createStackNavigator, createAppContainer } from "react-navigation";
+import { SongScreen } from './SecondScreen'
 
 class Clock extends Component {
   constructor(props) {
@@ -65,7 +66,7 @@ class Clock extends Component {
             value={this.state.minute}
           />
         </View>
-        <View style = {{flex: 1, alignItems: 'top'}}>
+        <View style = {{flex: 1, alignItems: 'top', width: 150, height: 150, backgroundColor: 'powderblue'}}>
 
           <Button
             title="Go to Song Selection"
@@ -89,22 +90,6 @@ class Clock extends Component {
         </View>
       </View>
     );
-  }
-}
-
-//Adding second screen
-class SongScreen extends React.Component {
-  render(){
-    return (
-      <View>
-        <Text> Here is the Song Selection </Text>
-        <Button
-          title="Go back to Home"
-          onPress={() => this.props.navigation.goBack()}
-        />
-      </View>
-
-    )
   }
 }
 
