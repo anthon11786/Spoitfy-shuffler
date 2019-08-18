@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, TextInput, View, Switch, Alert, Button } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Switch, Alert, Button, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import { SongScreen } from './SecondScreen'
 
@@ -31,7 +31,7 @@ class Clock extends Component {
 
   minuteSet = text =>{
     var re = /[0-5][0-9]/;
-    if(text.length == 2 && re.test(text) || text.length<2){
+    if(text.length == 2 && re.test(text) || text.length<2 ){
       this.setState({minute:text});
     }else{
       Alert.alert(
@@ -45,6 +45,7 @@ class Clock extends Component {
 
   render(){
     return (
+      <DismissKeyboard>
       <View style={styles.container}>
         <Text style={{fontSize:30, fontStyle:'italic'}} >Enter alarm time</Text>
         <View style={styles.timeContainer}>
@@ -66,6 +67,7 @@ class Clock extends Component {
             value={this.state.minute}
           />
         </View>
+
         <View style = {{flex: 1, alignItems: 'top', width: 150, height: 150, backgroundColor: 'powderblue'}}>
 
           <Button
@@ -89,9 +91,18 @@ class Clock extends Component {
           <Text textAlignVertical='center' style={{color:'blue'}}>PM</Text>
         </View>
       </View>
+      </DismissKeyboard>
     );
   }
 }
+
+//Allowing user to get out of numeric keypad when inputting min or hour
+const DismissKeyboard = ({ children }) =>(
+  <TouchableWithoutFeedback onPress = {() => Keyboard.dismiss()}>
+    {children}
+  </TouchableWithoutFeedback>
+
+);
 
 //The navigation stack, the fields are the different screens available
 const RootStack = createStackNavigator(
