@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, TextInput, View, Switch, Alert } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Switch, Alert, Button } from 'react-native';
+import { createStackNavigator, createAppContainer } from "react-navigation";
 
-export default class Clock extends Component {
+class Clock extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -64,6 +65,15 @@ export default class Clock extends Component {
             value={this.state.minute}
           />
         </View>
+        <View style = {{flex: 1, alignItems: 'top'}}>
+
+          <Button
+            title="Go to Song Selection"
+            onPress={() => this.props.navigation.navigate('Songs')}
+          />
+
+
+        </View>
         <View style={styles.timeContainer}>
           <Text textAlign='right' style={{color:'red'}}>AM</Text>
           <Switch
@@ -79,6 +89,41 @@ export default class Clock extends Component {
         </View>
       </View>
     );
+  }
+}
+
+//Adding second screen
+class SongScreen extends React.Component {
+  render(){
+    return (
+      <View>
+        <Text> Here is the Song Selection </Text>
+        <Button
+          title="Go back to Home"
+          onPress={() => this.props.navigation.goBack()}
+        />
+      </View>
+
+    )
+  }
+}
+
+//The navigation stack, the fields are the different screens available
+const RootStack = createStackNavigator(
+  {
+    Home: Clock ,
+    Songs: SongScreen
+  },
+  {
+    initialRouteName: 'Home', //Starting screen
+  }
+);
+
+const AppContainer = createAppContainer(RootStack);
+
+export default class App extends React.Component {
+  render() {
+    return <AppContainer />;
   }
 }
 
