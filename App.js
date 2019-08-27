@@ -52,7 +52,6 @@ class Clock extends Component {
           <TextInput
             textAlignVertical='top'
             keyboardType = 'numeric'
-            fontSize='30'
             placeholder="0h"
             onChangeText={(text) => this.hourSet(text)}
             value={this.state.hour}
@@ -61,14 +60,13 @@ class Clock extends Component {
           <TextInput
             textAlignVertical='top'
             keyboardType = 'numeric'
-            fontSize='30'
             placeholder="0m"
             onChangeText={(text) => this.minuteSet(text)}
             value={this.state.minute}
           />
         </View>
 
-        <View style = {{flex: 1, alignItems: 'top', width: 150, height: 150, backgroundColor: 'powderblue'}}>
+        <View style = {{flex: 1, width: 150, height: 150, backgroundColor: 'powderblue'}}>
 
           <Button
             title="Go to Song Selection"
@@ -140,8 +138,6 @@ const styles = StyleSheet.create({
     alignItems:'flex-end',
     justifyContent: 'space-between',
     fontSize:30,
-
-
   }
 
 });
